@@ -5,6 +5,19 @@ name = "pypi"
 
 [packages]
 django = "*"
+beautifulsoup4 = "*"
+certifi = "*"
+cloudinary = "*"
+dj-database-url = "*"
+django-bootstrap4 = "*"
+django-crispy-forms = "*"
+django-heroku = "*"
+python-decouple = "*"
+django-registration = "*"
+psycopg2 = "*"
+six = "*"
+urllib3 = "*"
+whitenoise = "*"
 
 [dev-packages]
 

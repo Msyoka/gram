@@ -10,6 +10,11 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
+import os
+import cloudinary
+import django_heroku
+import dj_database_url
+from decouple import config,Csv
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -37,7 +42,18 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'gram37',
+    'cloudinary',
+    'bootstrap4',
+    'crispy_forms',
 ]
+cloudinary.config(
+  cloud_name = config('CLOUD_NAME'),
+  api_key = config('API_KEY'),
+  api_secret = config('API_SECRET'),
+  cloudinary_url = config('CLOUDINARY_URL'),
+)
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -74,9 +90,16 @@ WSGI_APPLICATION = 'gram.wsgi.application'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+    'default':{
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': config('DB_NAME', 'postgres'),
+        'USER': config('DB_USER', 'postgres'),
+        'PASSWORD': config('DB_PASSWORD', ''),
+        'HOST': config('DB_HOST', 'localhost'),
+        'PORT': '',
+        'TEST': {
+            'NAME': 'gram',
+        }
     }
 }
 
