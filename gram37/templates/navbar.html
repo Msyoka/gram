@@ -1,0 +1,25 @@
+{% load static %}
+
+{% if user.is_authenticated %}
+<nav class="navbar navbar-expand-lg navbar-light bg-white py-3 shadow-sm sticky-top">
+    <div class="container"><a class="navbar-brand" href="{% url 'home' %}">
+        <strong class="h6 mb-0 font-weight-bold text-uppercase">GRAM37</strong></a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="{% url 'add_post' %}">
+                        <img src="{% static 'img/add.svg' %}" alt="" width="30" height="30">
+                    </a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="{% url 'profile' %}">
+                        <img src="{% static 'img/user.svg' %}" alt="" width="30" height="30">
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+{% else %}
+{% endif %}
